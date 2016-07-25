@@ -10,7 +10,7 @@ def read(fname):
 
 
 install_requires_list = ["boto3>=1.3.1"]
-tests_require = ["pytest>=2.9"]
+tests_require = ["dill>=0.2.5", "moto>=0.4.23", "pytest>=2.9"]
 
 
 version_file = "model_storage/_version.py"
