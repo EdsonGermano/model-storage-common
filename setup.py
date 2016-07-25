@@ -13,12 +13,12 @@ install_requires_list = ["boto3>=1.3.1"]
 tests_require = ["pytest>=2.9"]
 
 
-version_file = "modelstorage/_version.py"
+version_file = "model_storage/_version.py"
 with open(version_file) as fp:
     exec(fp.read())
 
 setup(
-    name="modelstorage",
+    name="model_storage",
     version=__version__,
     author="The Discovery Team",
     author_email="discovery-l@socrata.com",
