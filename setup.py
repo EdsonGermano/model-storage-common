@@ -1,8 +1,7 @@
 import os
-import sys
 
 from pyreleaseplugin import CleanCommand, ReleaseCommand, PyTest
-from setuptools import find_packages, setup, Command
+from setuptools import find_packages, setup
 
 
 def read(fname):
@@ -10,22 +9,22 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
-install_requires_list = ["twine>=1.7"]
+install_requires_list = ["boto3>=1.3.1"]
 tests_require = ["pytest>=2.9"]
 
 
-version_file = "pyreleaseplugin/_version.py"
+version_file = "modelstorage/_version.py"
 with open(version_file) as fp:
     exec(fp.read())
 
 setup(
-    name="pyreleaseplugin",
+    name="modelstorage",
     version=__version__,
     author="The Discovery Team",
     author_email="discovery-l@socrata.com",
-    description=("A setuptools plugin for simplifying the release of Python modules"),
+    description=("A module for loading and saving models"),
     license="TBD",
-    url="https://github.com/socrata/python-release-plugin",
+    url="https://github.com/socrata/model-storage-common",
     install_requires=install_requires_list,
     tests_require=tests_require,
     include_package_data=True,
