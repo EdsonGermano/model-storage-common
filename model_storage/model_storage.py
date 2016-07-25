@@ -1,8 +1,8 @@
-import os
-from urllib.parse import urlparse
-
 import boto3
 import boto3.session
+import os
+import pickle
+from urllib.parse import urlparse
 
 
 def is_s3_url(url):
@@ -126,3 +126,28 @@ def set_from_file(local_path, bucket, key=None, s3=None):
 
     with open(local_path, 'rb') as f:
         set_(f, bucket, key, s3)
+
+
+def save(model, path):
+    """
+    Persist the model to disk as a binary pickle file.
+
+    Args:
+        path (str): The output path to which the model should be written
+    """
+    with open(path, "wb") as outfile:
+        pickle.dump(model, outfile)
+
+
+def load(pickle_file):
+    """
+    Load a model from a pickle file and make a new instance from that.
+
+    Args:
+        pickle_file (str): The pickled model to load
+
+    Returns:
+        A new instance of a ColumnClassifier
+    """
+    with open(pickle_file, 'rb') as infile:
+        return pickle.load(infile)
