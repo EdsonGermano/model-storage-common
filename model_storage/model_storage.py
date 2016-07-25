@@ -92,6 +92,12 @@ def get_to_file(local_path, bucket, key, s3=None):
     s3.Bucket(bucket).download_file(key, local_path)
 
 
+def load_from_s3(url, s3=None):
+    bucket, key = parse_s3_url(url)
+    bytes = get_(bucket, key, s3)
+    return pickle.loads(bytes)
+
+
 def set_(data, bucket, key, s3=None):
     """
     Uploads the given data to an S3 bucket.
